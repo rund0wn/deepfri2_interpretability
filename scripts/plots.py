@@ -23,7 +23,7 @@ def format_go_label(go_id, go_dict):
 def generate_grouped_barplot(input_file, output_dir, metric_mapping, y_limit=120):
     df_ss = pd.read_csv(input_file, sep="\t")
     df_ss["GO_Term"] = df_ss["GO_Term"].str.replace("GO_", "GO:")
-    df_ss["Protein"] = df_ss["Protein"].str.strip()
+    # df_ss["Protein"] = df_ss["Protein"].str.strip()
 
     seq_pred_path = "/Users/rund/deepfri2_local/interpretability_local/prediction_scores/seq_model_predictions.csv"
     struct_pred_path = "/Users/rund/deepfri2_local/interpretability_local/prediction_scores/struct_model_predictions.csv"
@@ -38,8 +38,8 @@ def generate_grouped_barplot(input_file, output_dir, metric_mapping, y_limit=120
         df_seq_pred = df_seq_pred.rename(columns={"GO_term": "GO_Term", "predicted_p>=0.30": "seq_P"})
         df_struct_pred = df_struct_pred.rename(columns={"GO_term": "GO_Term", "predicted_p>=0.30": "struct_P"})
         
-        df_seq_pred["Protein"] = df_seq_pred["Protein"].str.strip()
-        df_struct_pred["Protein"] = df_struct_pred["Protein"].str.strip()
+        df_seq_pred["Protein"] = df_seq_pred["Protein"].str.split("-").str[1]
+        df_struct_pred["Protein"] = df_struct_pred["Protein"].str.split("-").str[1]
 
         df_ss = df_ss.merge(df_seq_pred[["Protein", "GO_Term", "seq_P"]], on=["Protein", "GO_Term"], how="left")
         df_ss = df_ss.merge(df_struct_pred[["Protein", "GO_Term", "struct_P"]], on=["Protein", "GO_Term"], how="left")
@@ -47,11 +47,12 @@ def generate_grouped_barplot(input_file, output_dir, metric_mapping, y_limit=120
         df_ss["seq_P"] = None
         df_ss["struct_P"] = None
 
+
     # 2. Apply the mapping to create a new label column
     df_ss["GO_Label"] = df_ss["GO_Term"].apply(lambda x: format_go_label(x, go_dict))
 
-    df_ss["UniProt"] = df_ss["Protein"].str.split("-").str[1]
-    id_vars = ["UniProt", "GO_Label", "seq_P", "struct_P"] # Use GO_Label here!
+    # df_ss["UniProt"] = df_ss["Protein"].str.split("-").str[1]
+    id_vars = ["Protein", "GO_Label", "seq_P", "struct_P"]
 
     plot_metrics = [col for col in metric_mapping.keys() if col in df_ss.columns]
 
@@ -64,22 +65,30 @@ def generate_grouped_barplot(input_file, output_dir, metric_mapping, y_limit=120
 
     df_melted_ss["Metric"] = df_melted_ss["Metric"].map(metric_mapping)
 
-    # (Keep your existing color palette code here...)
+    # (Keep existing color palette code here...)
     seq_metrics = [col for col in metric_mapping.keys() if col.startswith('Seq_') and col in plot_metrics]
     struct_metrics = [col for col in metric_mapping.keys() if col.startswith('Struct_') and col in plot_metrics]
-    seq_display_names = [metric_mapping[col] for col in seq_metrics]
-    struct_display_names = [metric_mapping[col] for col in struct_metrics]
-    seq_colors = sns.color_palette("Blues", n_colors=max(3, len(seq_display_names)))[:len(seq_display_names)]
-    struct_colors = sns.color_palette("Oranges", n_colors=max(3, len(struct_display_names)))[:len(struct_display_names)]
-    
-    palette = {}
-    for name, color in zip(seq_display_names, seq_colors): palette[name] = color
-    for name, color in zip(struct_display_names, struct_colors): palette[name] = color
+
+    # Check if we have specialized categories
+    if seq_metrics or struct_metrics:
+        # Build the dual-color palette (Blues and Oranges)
+        seq_display_names = [metric_mapping[col] for col in seq_metrics]
+        struct_display_names = [metric_mapping[col] for col in struct_metrics]
+        
+        seq_colors = sns.color_palette("Blues", n_colors=max(3, len(seq_display_names)))[:len(seq_display_names)]
+        struct_colors = sns.color_palette("Oranges", n_colors=max(3, len(struct_display_names)))[:len(struct_display_names)]
+        
+        palette = {}
+        for name, color in zip(seq_display_names, seq_colors): palette[name] = color
+        for name, color in zip(struct_display_names, struct_colors): palette[name] = color
+    else:
+        # Fallback to viridis if no "Seq_" or "Struct_" prefixes are found
+        palette = "viridis"
 
     os.makedirs(output_dir, exist_ok=True)
     sns.set_theme(style="whitegrid")
 
-    for protein, group in df_melted_ss.groupby("UniProt"):
+    for protein, group in df_melted_ss.groupby("Protein"):
         n_terms = group["GO_Label"].nunique()
         fig_width = max(8, n_terms * 2.5)
         fig, ax = plt.subplots(figsize=(fig_width, 8)) # Taller to fit names
