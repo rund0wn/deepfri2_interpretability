@@ -1,0 +1,86 @@
+### Predictions made by DeepFRI.
+Protein,GO_term/EC_number,Score,GO_term/EC_number name
+AF-P39639-F1-model_v6,GO:0046914,0.22070,transition metal ion binding
+AF-P39639-F1-model_v6,GO:0020037,0.12812,heme binding
+AF-P39639-F1-model_v6,GO:0051213,0.12307,dioxygenase activity
+AF-P39639-F1-model_v6,GO:0046906,0.11309,tetrapyrrole binding
+AF-P34413-F1-model_v6,GO:0022857,0.94220,transmembrane transporter activity
+AF-P34413-F1-model_v6,GO:0005215,0.93181,transporter activity
+AF-P34413-F1-model_v6,GO:0015075,0.88221,ion transmembrane transporter activity
+AF-P34413-F1-model_v6,GO:0015318,0.83252,inorganic molecular entity transmembrane transporter activity
+AF-P34413-F1-model_v6,GO:0008324,0.56449,cation transmembrane transporter activity
+AF-P34413-F1-model_v6,GO:0015267,0.54315,channel activity
+AF-P34413-F1-model_v6,GO:0022803,0.54089,passive transmembrane transporter activity
+AF-P34413-F1-model_v6,GO:0005216,0.46094,ion channel activity
+AF-P34413-F1-model_v6,GO:0022890,0.41645,inorganic cation transmembrane transporter activity
+AF-P34413-F1-model_v6,GO:0008509,0.29397,anion transmembrane transporter activity
+AF-P34413-F1-model_v6,GO:0046873,0.25716,metal ion transmembrane transporter activity
+AF-P34413-F1-model_v6,GO:0005261,0.17230,cation channel activity
+AF-P34413-F1-model_v6,GO:0022804,0.11875,active transmembrane transporter activity
+AF-P34413-F1-model_v6,GO:0015103,0.10930,inorganic anion transmembrane transporter activity
+AF-O13658-F1-model_v6,GO:0046914,0.17317,transition metal ion binding
+AF-O13658-F1-model_v6,GO:0016788,0.10422,"hydrolase activity, acting on ester bonds"
+AF-P00452-F1-model_v6,GO:0032559,0.99993,adenyl ribonucleotide binding
+AF-P00452-F1-model_v6,GO:0030554,0.99990,adenyl nucleotide binding
+AF-P00452-F1-model_v6,GO:0005524,0.99990,ATP binding
+AF-P00452-F1-model_v6,GO:0061731,0.99981,ribonucleoside-diphosphate reductase activity
+AF-P00452-F1-model_v6,GO:0032555,0.99979,purine ribonucleotide binding
+AF-P00452-F1-model_v6,GO:0004748,0.99979,"ribonucleoside-diphosphate reductase activity, thioredoxin disulfide as acceptor"
+AF-P00452-F1-model_v6,GO:0016728,0.99978,"oxidoreductase activity, acting on CH or CH2 groups, disulfide as acceptor"
+AF-P00452-F1-model_v6,GO:0035639,0.99976,purine ribonucleoside triphosphate binding
+AF-P00452-F1-model_v6,GO:0032553,0.99975,ribonucleotide binding
+AF-P00452-F1-model_v6,GO:0017076,0.99973,purine nucleotide binding
+AF-P00452-F1-model_v6,GO:0016725,0.99967,"oxidoreductase activity, acting on CH or CH2 groups"
+AF-P00452-F1-model_v6,GO:0097367,0.99963,carbohydrate derivative binding
+AF-P35520-F1-model_v6,GO:0019842,0.60911,vitamin binding
+AF-P35520-F1-model_v6,GO:0030170,0.60301,pyridoxal phosphate binding
+AF-P35520-F1-model_v6,GO:0016829,0.60238,lyase activity
+AF-P35520-F1-model_v6,GO:0070279,0.59631,vitamin B6 binding
+AF-P35520-F1-model_v6,GO:0016846,0.24720,carbon-sulfur lyase activity
+AF-P35520-F1-model_v6,GO:0016765,0.10216,"transferase activity, transferring alkyl or aryl (other than methyl) groups"
+AF-O94468-F1-model_v6,GO:0003677,0.32718,DNA binding
+AF-P9WPJ9-F1-model_v6,GO:0016835,0.99982,carbon-oxygen lyase activity
+AF-P9WPJ9-F1-model_v6,GO:0016836,0.99964,hydro-lyase activity
+AF-P9WPJ9-F1-model_v6,GO:0016829,0.99889,lyase activity
+AF-P9WPJ9-F1-model_v6,GO:0004089,0.82676,carbonate dehydratase activity
+AF-P9WPJ9-F1-model_v6,GO:0008270,0.75063,zinc ion binding
+AF-P9WPJ9-F1-model_v6,GO:0046914,0.45691,transition metal ion binding
+AF-Q9M156-F1-model_v6,GO:0016757,0.99657,"transferase activity, transferring glycosyl groups"
+AF-Q9M156-F1-model_v6,GO:0016758,0.97525,"transferase activity, transferring hexosyl groups"
+AF-Q9M156-F1-model_v6,GO:0008194,0.67066,UDP-glycosyltransferase activity
+AF-Q9M156-F1-model_v6,GO:0046527,0.44339,glucosyltransferase activity
+AF-Q9M156-F1-model_v6,GO:0035251,0.38166,UDP-glucosyltransferase activity
+AF-P13569-3-F1-model_v6,GO:0016817,0.90280,"hydrolase activity, acting on acid anhydrides"
+AF-P13569-3-F1-model_v6,GO:0016462,0.90250,pyrophosphatase activity
+AF-P13569-3-F1-model_v6,GO:0016818,0.90199,"hydrolase activity, acting on acid anhydrides, in phosphorus-containing anhydrides"
+AF-P13569-3-F1-model_v6,GO:0016887,0.90118,ATPase activity
+AF-P13569-3-F1-model_v6,GO:0022857,0.89522,transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0017111,0.89408,nucleoside-triphosphatase activity
+AF-P13569-3-F1-model_v6,GO:0005215,0.87753,transporter activity
+AF-P13569-3-F1-model_v6,GO:0022804,0.86395,active transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0032553,0.85719,ribonucleotide binding
+AF-P13569-3-F1-model_v6,GO:0097367,0.84477,carbohydrate derivative binding
+AF-P13569-3-F1-model_v6,GO:0032559,0.84110,adenyl ribonucleotide binding
+AF-P13569-3-F1-model_v6,GO:0005524,0.83796,ATP binding
+AF-P13569-3-F1-model_v6,GO:0030554,0.83569,adenyl nucleotide binding
+AF-P13569-3-F1-model_v6,GO:0032555,0.83394,purine ribonucleotide binding
+AF-P13569-3-F1-model_v6,GO:0015399,0.83214,primary active transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0017076,0.82539,purine nucleotide binding
+AF-P13569-3-F1-model_v6,GO:0035639,0.81760,purine ribonucleoside triphosphate binding
+AF-P13569-3-F1-model_v6,GO:0042626,0.81094,ATPase-coupled transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0008509,0.42783,anion transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0015075,0.42013,ion transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0022853,0.39056,active ion transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0005319,0.24702,lipid transporter activity
+AF-P13569-3-F1-model_v6,GO:0042625,0.23167,ATPase-coupled ion transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0008324,0.18748,cation transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0015078,0.15948,proton transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0015291,0.14475,secondary active transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0042887,0.14131,amide transmembrane transporter activity
+AF-P13569-3-F1-model_v6,GO:0140359,0.11369,ABC-type transporter activity
+AF-P13569-3-F1-model_v6,GO:0015318,0.10359,inorganic molecular entity transmembrane transporter activity
+AF-P0ABT2-F1-model_v6,GO:0008199,0.93977,ferric iron binding
+AF-P0ABT2-F1-model_v6,GO:0005506,0.91603,iron ion binding
+AF-P0ABT2-F1-model_v6,GO:0046914,0.90298,transition metal ion binding
+AF-P0ABT2-F1-model_v6,GO:0016722,0.75863,"oxidoreductase activity, oxidizing metal ions"
+AF-P0ABT2-F1-model_v6,GO:0003677,0.38378,DNA binding

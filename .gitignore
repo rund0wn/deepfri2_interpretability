@@ -1,0 +1,12 @@
+.vscode
+.ruff_cache
+local/
+old/
+scratch/
+filtered_metrics_r1/
+integrated_gradients/
+
+# Ignore system files
+.DS_Store
+venv/
+.env
