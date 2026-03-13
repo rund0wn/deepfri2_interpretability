@@ -41,18 +41,17 @@ def generate_grouped_barplot(input_file, output_dir, metric_mapping, y_limit=120
         df_seq_pred["Protein"] = df_seq_pred["Protein"].str.split("-").str[1]
         df_struct_pred["Protein"] = df_struct_pred["Protein"].str.split("-").str[1]
 
-        df_ss = df_ss.merge(df_seq_pred[["Protein", "GO_Term", "seq_P"]], on=["Protein", "GO_Term"], how="left")
+        df_ss = df_ss.merge(df_seq_pred[["Protein", "GO_Term", "seq_P", "deepfri_v1_pred"]], on=["Protein", "GO_Term"], how="left")
         df_ss = df_ss.merge(df_struct_pred[["Protein", "GO_Term", "struct_P"]], on=["Protein", "GO_Term"], how="left")
     else:
         df_ss["seq_P"] = None
         df_ss["struct_P"] = None
 
-
     # 2. Apply the mapping to create a new label column
     df_ss["GO_Label"] = df_ss["GO_Term"].apply(lambda x: format_go_label(x, go_dict))
 
     # df_ss["UniProt"] = df_ss["Protein"].str.split("-").str[1]
-    id_vars = ["Protein", "GO_Label", "seq_P", "struct_P"]
+    id_vars = ["Protein", "GO_Label", "seq_P", "struct_P", "deepfri_v1_pred"]
 
     plot_metrics = [col for col in metric_mapping.keys() if col in df_ss.columns]
 
@@ -68,19 +67,24 @@ def generate_grouped_barplot(input_file, output_dir, metric_mapping, y_limit=120
     # (Keep existing color palette code here...)
     seq_metrics = [col for col in metric_mapping.keys() if col.startswith('Seq_') and col in plot_metrics]
     struct_metrics = [col for col in metric_mapping.keys() if col.startswith('Struct_') and col in plot_metrics]
+    deepfri_metrics = [col for col in metric_mapping.keys() if col.startswith('DeepFRI') and col in plot_metrics]
 
     # Check if we have specialized categories
     if seq_metrics or struct_metrics:
         # Build the dual-color palette (Blues and Oranges)
+        deepfri_display_names = [metric_mapping[col] for col in deepfri_metrics]
         seq_display_names = [metric_mapping[col] for col in seq_metrics]
         struct_display_names = [metric_mapping[col] for col in struct_metrics]
         
+        deepfri_colors = sns.color_palette("Greys", n_colors=max(3, len(deepfri_display_names)))[:len(deepfri_display_names)]
         seq_colors = sns.color_palette("Blues", n_colors=max(3, len(seq_display_names)))[:len(seq_display_names)]
         struct_colors = sns.color_palette("Oranges", n_colors=max(3, len(struct_display_names)))[:len(struct_display_names)]
         
         palette = {}
+        for name, color in zip(deepfri_display_names, deepfri_colors): palette[name] = color
         for name, color in zip(seq_display_names, seq_colors): palette[name] = color
         for name, color in zip(struct_display_names, struct_colors): palette[name] = color
+        
     else:
         # Fallback to viridis if no "Seq_" or "Struct_" prefixes are found
         palette = "viridis"
@@ -98,15 +102,19 @@ def generate_grouped_barplot(input_file, output_dir, metric_mapping, y_limit=120
 
         # Annotations using GO_Label
         go_terms = group["GO_Label"].unique()
+
         for i, term in enumerate(go_terms):
             term_data = group[group["GO_Label"] == term].iloc[0]
             s_val, st_val = term_data["seq_P"], term_data["struct_P"]
+            d_val = term_data["deepfri_v1_pred"]
 
             s_txt = f"{s_val:.2f}" if pd.notnull(s_val) else "N/A"
             st_txt = f"{st_val:.2f}" if pd.notnull(st_val) else "N/A"
+            # d_txt = f"{d_val:.2f}" if pd.notnull(d_val) and term_data['Overlap (%)'] else "N/A"
+            d_txt = f"{d_val:.2f}" if pd.notnull(term_data['Overlap (%)']) else "N/A"
 
             ax.text(
-                i, y_limit * 0.875, f"Seq: {s_txt}\nStr: {st_txt}",
+                i, y_limit * 0.875, f"Seq: {s_txt}\nStr: {st_txt}\nDF1: {d_txt}",
                 ha="center", va="bottom", fontsize=9, fontweight="bold",
                 bbox=dict(facecolor="white", alpha=0.8, edgecolor="none", pad=1),
             )
