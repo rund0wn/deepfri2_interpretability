@@ -16,8 +16,7 @@ def run_statistical_analysis(auroc_file, output_plot_path):
     # Isolate only the AUROC columns
     metric_cols = [col for col in df.columns if col.endswith('_AUROC')]
     
-    # The Friedman test requires "complete blocks" (no missing data).
-    # We drop any rows where a metric returned NaN (e.g., if AUROC was undefined)
+    # The Friedman test requires "complete blocks" (no missing data)
     df_metrics = df[metric_cols].dropna()
     
     print(f"Analyzing {len(df_metrics)} valid protein targets across {len(metric_cols)} metrics.")
