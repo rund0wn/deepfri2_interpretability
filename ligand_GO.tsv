@@ -1,0 +1,11 @@
+ligand	GO_term_name	GO_term	category
+DNA	DNA binding	GO:0003677	nucleotide binding
+ATP	ATP binding	GO:0005524	small molecule/cofactor binding
+CA	calcium ion binding	GO:0005509	metal ion binding
+HEM	heme binding	GO:0020037	small molecule/cofactor binding
+MG	magnesium ion binding	GO:0000287	metal ion binding
+MN	manganese ion binding	GO:0030145	metal ion binding
+PEP	peptide binding	GO:0042277	peptide binding
+PRO	protein binding	GO:0005515	protein binding
+RNA	RNA binding	GO:0003723	nucleotide binding
+ZN	zinc ion binding	GO:0008270	metal ion binding
