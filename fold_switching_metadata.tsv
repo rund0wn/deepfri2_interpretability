@@ -1,0 +1,7 @@
+Protein	fold1	fold2	identity	rmsd	TM-score	len1	len2
+XCL1	1j9o_A	2n54_A	0.978495	3.78	0.31321	93	93
+RfaH	6c6s_D	2oug_A	1.000000	3.22	0.53090	162	162
+KaiB	5jyt_A	2qke_F	0.888889	3.71	0.43495	106	108
+VSV-Indiana glycoprotein	5i2s_A	5i2m_A	1.000000	4.33	0.36221	422	422
+CopK	2lel_A	2k0q_A	1.000000	2.49	0.54195	74	74
+Abeta42	1iyt_A	5oqv_A	1.000000	3.32	0.21026	42	42
